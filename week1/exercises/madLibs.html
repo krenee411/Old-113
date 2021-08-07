@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Mad Libs Generator</title>
+        <link rel="stylesheet" href="states.js">
+        <link rel="stylesheet" href="temps.js">
         <style>
             body {
                 font-family: Verdana, Geneva, Tahoma;
@@ -44,12 +46,13 @@
             <div>Noun:</div>
             <div><input style='width:90%' id='noun' /></div>
             <div class='madLibSpanner' style="text-align: right; padding: 10px;">
-                <button id='submit' onc Submit</button>
+                <button id='submit' on Submit>Submit</button>
             </div>
         </div>
         <br /><br />
         <div id='madLibText' class='madLibText'></div>
     </body>
+
     <script>
         document.getElementById('submit').addEventListener( 'click', function() { doMadLib() } )
         document.getElementById('name').addEventListener( 'keyup', function() { doMadLib() } )
