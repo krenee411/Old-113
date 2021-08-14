@@ -6,27 +6,38 @@
 
 // modify this script to use the first day of the month the user selects in place of the const today 
 
-const today = new Date('5/1/2021')
+const today = new Date()
 const month = today.getMonth()
+
 let days
 switch (month) {
-    case 1:
+    case 1: "February";
         days = 28
         break
-    case 3:
-    case 5:
-    case 8: 
-    case 10:
+    case 3: "April";
+    case 5: "June";
+    case 8: "September";
+    case 10:"November";
         days = 30
         break
     default:
         days = 31
 }
-    
-let x
-const weekday = today.getDay()
-for (x = 0; x < weekday; x++){
-    document.getElementById('calendarDays').innerHTML += "<div class='blankDay'>&nbsp;</div>"
+document.getElementById("selectMonth")
+{<option value="0">Months</option>
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+
 }
 
 let dt = 0
@@ -36,12 +47,17 @@ do {
 } while ( dt < days)
 
 const monthName = today.toLocaleDateString('default', {month:'long'})
-const year = today.getFullYear()
+year = today.getFullYear()
 document.querySelector('.calendarTitle').innerText = `${monthName} ${year}`
+
 
 const remainder = (7 - ((x + dt) % 7))
 let y = 0
 while ( y < remainder) {
-    document.getElementById('calendarDays').innerHTML += "<div class='blankDay'>&nbsp;</div>"
+    document.getElementById('').innerHTML += "<div class='blankDay'>&nbsp;</div>"
     y++
+}
+
+function jump(){
+    year= parseInt(monthName)
 }
