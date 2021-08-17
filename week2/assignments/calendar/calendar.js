@@ -8,7 +8,6 @@
 
 const today = new Date()
 const month = today.getMonth()
-
 let days
 switch (month) {
     case 1: "February";
@@ -23,6 +22,17 @@ switch (month) {
     default:
         days = 31
 }
+const monthsOfYear=[
+    num0= "jan",
+    num1= "feb",
+    num2= "mar",
+    num3= "apr"
+]
+function printCalendar(){
+return monthsOfYear + year + days
+}
+
+
 let dt = 0
 do {
     dt++
@@ -30,18 +40,19 @@ do {
 } while ( dt < days)
 
 const monthName = today.toLocaleDateString('default', {month:'long'})
-
-year = today.getFullYear()
+const year = today.getFullYear()
 document.querySelector('.calendarTitle').innerText = `${monthName} ${year}`
 
-
+let x  = 0
 const remainder = (7 - ((x + dt) % 7))
 let y = 0
 while ( y < remainder) {
-    document.getElementById('').innerHTML += "<div class='blankDay'>&nbsp;</div>"
+    document.getElementById('calendarDays').innerHTML += "<div class='blankDay'>&nbsp;</div>"
     y++
 }
 
-function jump(){
-    year= parseInt(monthName)
-}
+
+
+
+
+

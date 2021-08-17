@@ -10,8 +10,7 @@
         <div class='calendarWrapper'>
             <div class='calendarTitle'>Calender</div>
             <div id="select">
-                <select name="months" id="selectMonths" onchange="jump()">
-                    <option value="0">Months</option>
+                <select name="months" id="selectMonths" onclick="printCalendar()">
                     <option value="0">January</option>
                     <option value="1">February</option>
                     <option value="2">March</option>
@@ -26,8 +25,7 @@
                     <option value="11">December</option>
                 </select>
                 <input type="number" name="year" id="selectyear">
-                <input type="submit" value="go" onclick="gogo()">
-            </div>
+                <input type="submit" value="go" onclick="printCalendar()"></div>
             <div class='calendar' id='calendarDays'></div>
         </div>
     </body>

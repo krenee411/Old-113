@@ -24,26 +24,54 @@ const parts = [
 
 // list of each part number and qty for check-off in the "detailsList" element
 function Items(){
+   var detailsList = document.getElementById("detailsList")
 for (i=0; i< parts.length; i++){
-    console.log("Part:" + parts[i].partDescr + " Quanity:" + parts[i].qty)
+
+    let partItem = document.createElement('div')
+
+    let check = document.createElement("input")
+        check.setAttribute("type","checkbox")
+        partItem.appendChild(check)
+
+    let partInfo = document.createElement('span')
+        partInfo.textContent = (" Part Number: " + parts[i].partNbr + ""+ " Quanity :" + parts[i].qty)
+        partItem.appendChild(partInfo)
+        detailsList.appendChild(partItem)
 }}
 Items();
 console.log("----------------------------------")
 // if parts requiring special handling exist (in aisle B3), list of items needing 
 // special packaging in the "specialPackaging" element, else remove element
 function Special(){
-for (i=0; i< parts.length; i++){
+    let getSpec = document.getElementById('specialPackaging')
+        getSpec.setAttribute('type', 'button')
+    
+for (i=0; i< parts.length; i++){  
    if(parts[i].aisle == 'B3'){
-    console.log(parts[i].partDescr)
+    
+    let spec = document.createElement('div')
+        spec.setAttribute('id', "specDiv")
+        spec.textContent = (parts[i].partDescr)
+        getSpec.appendChild(spec)  
+    
    }}}
+
    Special();
      console.log("-------------------------------")
 // if hazardous parts exist (in aisle J4), let employee know in the "hazardousMaterials"
 // element and remind them to get gloves, else remove element
 function Haz(){
+    var getHazMat = document.getElementById('hazardousMaterials')
+    getHazMat.setAttribute('type', 'button')
+
 for (i=0; i< parts.length; i++){
     if(parts[i].aisle == 'J4'){
-     console.log("**HAZARDOUS** " + parts[i].partDescr + ": You will need gloves to handle this item!")
+     
+        let hazMat= document.createElement('div')
+            hazMat.setAttribute('id','hazDiv')
+            hazMat.textContent = ("**HAZARDOUS** " + parts[i].partDescr + ": You will need gloves to handle this item!")
+            getHazMat.appendChild(hazMat)
+     
     }}}
     Haz();
     console.log("---------------------------------")
@@ -51,31 +79,50 @@ for (i=0; i< parts.length; i++){
 // if all items in the order are small parts (aisle H1), then let employee know that they should take 
 // a basket and go dirctly to aisle H1
 function Small(){
+    let getSmall = document.getElementById('smallItemsOnly')
 for (i=0; i< parts.length; i++){
     if(parts[i].aisle == 'H1'){
-     console.log("**SMALL PARTS** " + parts[i].partDescr + ": Alise: H1-- Dont forget you will need a basket!")
+
+        let smallItem= document.createElement('div')
+            smallItem.setAttribute('id', 'smallDiv')
+            smallItem.textContent =  ("**SMALL PARTS** " + parts[i].partDescr + ": Alise: H1-- Dont forget you will need a basket!")
+            getSmall.appendChild(smallItem)
     }}}
     Small();
     console.log("-----------------------------")
 // if there are large items (anthing in aisles S, T, or U), then let the employee know in the "forkiftNeeded"
 // element that they will need to reserve a forklift, else remove the element
 function Heavy(){
+    let getHeavy = document.getElementById('forkiftNeeded')
 for (i=0; i< parts.length; i++){
     if(parts[i].aisle == 'S'|'T'|'U'){
-     console.log("**FORKLIFT NEEDED** " + parts[i].partDescr)
+
+        let forklift = document.createElement('div')
+            forklift.setAttribute('id', 'forkDiv')
+         forklift.textContent = ("**FORKLIFT NEEDED** " + parts[i].partDescr)
+         getHeavy.appendChild(forklift)
+
     }}}
     Heavy();
 // sum up the total number of parts and append that number to the text already in "totalItems" element
+/*function Total(){
+    var tot=0;
+    for(var i=0;i<parts.length;i++){
+        if(parseInt(parts[i].qty.value))
+            tot += parseInt(parts[i].qty.value);
+    }
+    document.getElementById('totalItems').value = tot;
+}
+Total();*/
 function Total(){
+    let tot= document.getElementById('totalItems')
+    let sum = 0
 for (i=0; i< parts.length; i++){
-     console.log("Total Items:" + parts.length *1)
-}}
-Total();
-
-let click= document.getElementsByClassName('sidebar')
-let detail= document.getElementById('detailsList')
-let special=document.getElementById('specialPackaging')
-let hazardous=document.getElementById('hazardousMaterials')
-let smallItem=document.getElementById('smallItemsOnly')
-let fork= document.getElementById('forkiftNeeded' )
-let all= document.getElementById('totalItems')
+    sum += parts[i].qty
+    //if(parts[i].qty > 0){ 
+      //  addNum += parts[i].qty * 1
+      //  tot.appendChild(addNum)
+    }
+tot.textContent += sum
+}
+Total()
