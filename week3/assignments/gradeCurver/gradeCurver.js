@@ -3,6 +3,17 @@
 // create an event listener that calls the curveGrade() function when the Curve It!! button is clicked
 
 // create an event listener that resets the scores and grades to their defaults when the Reset button is clicked
+let aryGrades, gradeSlice, mean, range
+
+var submit = document.getElementById('submit').addEventListener('click', function(){
+    curveGrades()
+})
+var grades = document.getElementById('grades')
+grades.innerHTML += submit
+var reset = document.getElementById('reset').addEventListener('click', function(){
+    document.getElementById('scores').value = ""
+    document.getElementById('grades').innerText = ""
+})
 
 function applyBell(grade, index, ary) {
     switch (true) {
@@ -31,10 +42,7 @@ function convertArray(obj) {
     })
     return ary
 }
-var submit = document.getElementById('submit').addEventListener('onclick', curveGrade())
-var grades = document.getElementById('grades')
-grades.innerHTML += submit
-var reset = document.getElementById('reset').addEventListener('onclick', reset.value = "")
+
 
 // Condense the number of lines within the curveGrade() function as much as possible by converting 
 // the functions to arrow functions. You can also condense the number of lines by combining some 
@@ -42,6 +50,7 @@ var reset = document.getElementById('reset').addEventListener('onclick', reset.v
 // empty lines, can you get the number of lines down to 8?
 
 function curveGrades() {
+    
     let sum = ((accumulator, currentValue) =>  accumulator + currentValue)
     
     let sumGrades = (array => array.reduce(sum))
@@ -61,4 +70,5 @@ function curveGrades() {
     aryGrades.forEach(applyBell)
 
     // write the value of aryGrades to the grades div in the HTML document
+    document.getElementById('grades').innerText = aryGrades
 }
