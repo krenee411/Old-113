@@ -31,6 +31,10 @@ function convertArray(obj) {
     })
     return ary
 }
+var submit = document.getElementById('submit').addEventListener('onclick', curveGrade())
+var grades = document.getElementById('grades')
+grades.innerHTML += submit
+var reset = document.getElementById('reset').addEventListener('onclick', reset.value = "")
 
 // Condense the number of lines within the curveGrade() function as much as possible by converting 
 // the functions to arrow functions. You can also condense the number of lines by combining some 
@@ -38,27 +42,19 @@ function convertArray(obj) {
 // empty lines, can you get the number of lines down to 8?
 
 function curveGrades() {
-    **sum = function (accumulator, currentValue) {
-        return accumulator + currentValue
-    }
-
-    **sumGrades = function(array) {
-        return array.reduce(sum)
-    }
-
-    **aryGrades = convertArray(document.querySelector('#scores'))
-
-    **minGrade = aryGrades.reduce(function(a, b) {
-        return Math.min(a, b)
-    })
+    let sum = ((accumulator, currentValue) =>  accumulator + currentValue)
     
-    **maxGrade = aryGrades.reduce(function(a, b) {
-        return Math.max(a, b)
-    })
+    let sumGrades = (array => array.reduce(sum))
     
-    **mean = sumGrades(aryGrades) / aryGrades.length
+    let aryGrades = convertArray(document.querySelector('#scores'))
 
-    **range = maxGrade - minGrade
+    let minGrade = aryGrades.reduce( (a, b) => Math.min(a, b))
+    
+    let maxGrade = aryGrades.reduce((a, b) => Math.max(a, b))
+    
+    let mean = sumGrades(aryGrades) / aryGrades.length
+
+    let range = maxGrade - minGrade
 
     gradeSlice = range / 5
 

@@ -11,45 +11,36 @@ const movies = [
     { name: 'Frozen II', year: 2019, gross: 1450026933 }
 ]
 
-const movies2B = movies.filter(function(item) {
-    return item.gross >= 2000000000
-})
 
+ 
+
+
+
+
+const movies2B = movies.filter(item => item.gross >= 2000000000
+)
 console.log(movies2B)
 
 const moviesDTL  = movies.forEach(function(movie) {
     console.log(movie)
 })
-
 console.log(moviesDTL)
 
-const movieNames = movies.map(function(item) {
-    return item.name
-})
-
+const movieNames = movies.map(item =>  item.name
+)
 console.log(movieNames)
 
-const faveMovie = movies.find(function(item) {
-    return item.name === 'The Lion King'
-})
-
+const faveMovie = movies.find(item => item.name === 'The Lion King'
+)
 console.log(faveMovie)
 
-const oldMovies = movies.some(function(item) {
-    return item.year <= 2000
-})
-
+const oldMovies = movies.some(item => item.year <= 2000
+)
 console.log(oldMovies)
 
-const blockBusters = movies.every(function(item) {
-    return item.gross >= 1500000000
-})
-
+const blockBusters = movies.every(item => item.gross >= 1500000000
+)
 console.log(blockBusters)
 
-const totalGross = movies.reduce(function(currentTotal, item) {
-            return item.gross + currentTotal
-    }, 
-0)
-    
-console.log(totalGross / movies.length)
+const totalGross = movies.reduce( (currentTotal, item) => item.gross + currentTotal, 0)
+    console.log(totalGross / movies.length)
